@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
 
-    <!--- COMPLETAR ESTE TEXTO -->
+    <!--- TODO - COMPLETAR ESTE TEXTO -->
 
     <TextView
         android:id="@+id/searchingBox"
@@ -15,12 +15,14 @@
         android:hint="There are all recent notices ----------"
         android:inputType="text" />
 
+    <!--- TODO - cambiar adonde apunta el onClick -->
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:onClick="bookToSearch"
-        android:text="search"
+        android:text="UPDATE NOW"
         android:textSize="20sp" />
 
     <ListView
