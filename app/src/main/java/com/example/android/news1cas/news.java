@@ -6,6 +6,9 @@ package com.example.android.news1cas;
 
 public class News {
 
+    //** information about tittle of new */
+
+
 
 
 
