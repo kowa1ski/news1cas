@@ -7,6 +7,7 @@ public class MainActivity extends AppCompatActivity {
 
     // this is the link to use
     // http://content.guardianapis.com/search?q=technology&tag=technology/technology&api-key=test
+    //recuerda que quizá esa url no sea la mejor opción
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,5 +15,3 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 }
-
-// I love la macarena - olé
