@@ -3,6 +3,7 @@ package com.example.android.news1cas;
 import android.text.TextUtils;
 import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -140,17 +141,30 @@ public final class QueryUtils {
             //Create a JSONObject from the JSON response string
             JSONObject baseJsonResponse = new JSONObject(newsJSON);
 
-            /**
-             * El siguiente bloque va a extraer la información de las
-             * diferentes keys del objeto JSON.
-             * TODO - los pasos son
-             * 1. carga la url que tengo en comentarios en el main.
-             * 2. identifica las claves que nos van a hacer falta.
-             * 3. ponte a extraer esas claves debidamente.
-             */
-            //Extract the JSONArray associated with the key called
 
+            //Extract the JSONArray associated with the key called "results"(into
+            // "response") ,
+            // which represents a list of news
+            JSONObject objetResponse = baseJsonResponse.getJSONObject("response");
+            JSONArray objectResults = objetResponse.getJSONArray("results");
 
+            // For each new in the key results, create an {@link News} objetc
+            for ( int i = 0; i < objectResults.length(); i++ ) {
+                JSONObject currentNew = objectResults.getJSONObject(i);
+
+                // Extract key called "webTitle", "webUrl" and sectionName
+                String title = currentNew.getString("webTitle");
+                String url = currentNew.getString("webUrl");
+                String sectionName = currentNew.getString("sectionName");
+
+                // Create a new {@link News} object with the title,
+                // url and setionName JSON response.
+                News news = new News(title, sectionName, url);
+
+                //Add the new {@link News} to the list of news.
+                newsArrayList.add(news);
+
+            }
 
 
 
@@ -160,6 +174,9 @@ public final class QueryUtils {
             // with the message from the exception.
             Log.e("QueryUtils", "Problem parsing the news JSON results", e);
         }
+
+        // Return the list of news
+        return newsArrayList;
     }
 
 
